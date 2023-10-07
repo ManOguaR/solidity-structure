@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.20;
 
 import {Context} from "@openzeppelin/contracts/utils/Context.sol";
 import {RefundEscrow} from "@openzeppelin/contracts/utils/escrow/RefundEscrow.sol";
