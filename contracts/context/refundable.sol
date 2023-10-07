@@ -8,7 +8,7 @@ import {RefundEscrow} from "contracts/utils/escrow/refundEscrow.sol";
  * @title RefundableCrowdsale
  * @dev Extension of `Context`contract that the possibility of users getting a refund.
  */
-abstract contract RefundableContract is Context {
+abstract contract Refundable is Context {
     // refund escrow used to hold funds
     RefundEscrow private _escrow;
 
