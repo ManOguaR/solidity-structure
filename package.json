@@ -1,6 +1,6 @@
 {
   "name": "solid-struct",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "This package recovers the old OpenZeppelin 2.5.1 crowdsale contracts and get them updated to latest OpenZeppelin and solidity compiler versions",
   "main": "index.js",
   "scripts": {
