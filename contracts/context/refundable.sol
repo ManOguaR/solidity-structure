@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.0;
 
 import {Context} from "@openzeppelin/contracts/utils/Context.sol";
-import {RefundEscrow} from "@openzeppelin/contracts/utils/escrow/RefundEscrow.sol";
+import {RefundEscrow} from "contracts/utils/escrow/refundEscrow.sol";
 
 /**
  * @title RefundableCrowdsale
@@ -17,7 +17,7 @@ abstract contract RefundableContract is Context {
      */
     constructor (address payable inWallet) 
     {
-        _escrow = new RefundEscrow(inWallet);
+        _escrow = new RefundEscrow(inWallet, address(this));
     }
 
     /**

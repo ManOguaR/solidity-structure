@@ -1,19 +1,13 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/Context.sol";
 
 /**
  * @dev A Secondary contract can only be used by its primary account (the one that created it).
- * Primary account status can be transferred to a new account by the current primary account only.
  */
 abstract contract Secondary is Context {
     address private _primary;
-
-    /**
-     * @dev Emitted when the primary contract changes.
-     */
-    event PrimaryTransferred(address recipient);
 
     /**
      * @dev Sets the primary account to the one that is creating the Secondary contract.
@@ -21,7 +15,6 @@ abstract contract Secondary is Context {
     constructor () {
         address msgSender = _msgSender();
         _primary = msgSender;
-        emit PrimaryTransferred(msgSender);
     }
 
     /**
@@ -37,15 +30,5 @@ abstract contract Secondary is Context {
      */
     function primary() public view returns (address) {
         return _primary;
-    }
-
-    /**
-     * @dev Transfers contract to a new primary.
-     * @param recipient The address of new primary.
-     */
-    function transferPrimary(address recipient) public onlyPrimary {
-        require(recipient != address(0), "Secondary: new primary is the zero address");
-        _primary = recipient;
-        emit PrimaryTransferred(recipient);
     }
 }
