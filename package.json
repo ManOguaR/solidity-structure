@@ -1,0 +1,30 @@
+{
+  "name": "solidity-structure",
+  "version": "1.0.2",
+  "description": "This package recovers the old OpenZeppelin 2.5.1 crowdsale contracts and get them updated to latest OpenZeppelin and solidity compiler versions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManOguaR/solidity-structure.git"
+  },
+  "keywords": [
+    "ethereum",
+    "solidity",
+    "crowdsale",
+    "ERC20",
+    "contract",
+    "update-from"
+  ],
+  "author": "ManOguaR",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ManOguaR/solidity-structure/issues"
+  },
+  "homepage": "https://github.com/ManOguaR/solidity-structure#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.0"
+  }
+}
