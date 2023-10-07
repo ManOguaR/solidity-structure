@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/utils/Context.sol";
 
 /**
  * @dev A Secondary contract can only be used by its primary account (the one that created it).
+ * Primary account status can be transferred to a new account by the current primary account only.
  */
 abstract contract Secondary is Context {
     address private _primary;
@@ -12,9 +13,7 @@ abstract contract Secondary is Context {
     /**
      * @dev Emitted when the primary contract changes.
      */
-    event PrimaryTransferred(
-        address recipient
-    );
+    event PrimaryTransferred(address recipient);
 
     /**
      * @dev Sets the primary account to the one that is creating the Secondary contract.
