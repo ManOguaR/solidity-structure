@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import {Context} from "@openzeppelin/contracts/utils/Context.sol";
-import {RefundEscrow} from "contracts/utils/escrow/refundEscrow.sol";
+import {RefundEscrow} from "../utils/escrow/refundEscrow.sol";
 
 /**
  * @title RefundableCrowdsale

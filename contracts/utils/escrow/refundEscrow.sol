@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "contracts/utils/escrow/conditionalEscrow.sol";
+import "./conditionalEscrow.sol";
 
 /**
  * @title RefundEscrow
