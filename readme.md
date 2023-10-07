@@ -1,7 +1,5 @@
-﻿# solidity-crowdsale
-Thre are a set of solidity contracts that can be used to create a crowdsale for a token.
-The contracts are based on the old OpenZeppelin 2.5.1 contracts, but updated to use the
-latest OpenZeppelin 5.0.0 contracts.
+﻿# solidity-structure
+Overloading of some OpenZeppelin contracts to add a ready-to use structural behaviors and interactions between contracts.
 
 ## why
 Because the old OpenZeppelin 2.5.1 contracts are not compatible with the latest solidity
@@ -23,24 +21,13 @@ The contracts are:
 		|- crowdsale.sol: base contract for managing a token crowdsale.
 		|-abstractions
 		|	|- finalizable.sol: extension where a contract can be finalized.
-		|	|- mintable.sol: ERC20 mintable token utility.
+		|-context
 		|	|- refundable.sol: extension where a transacton can be refunded by Escrow.
 		|	└- secondary.sol: used as secondary Context. 
-		|-distribution
-		|	|- finalizableCrowdsale.sol: adds finalization logic to a crowdsale.
-		|	|- postDeliveryCrowdsale.sol: adds post delivery logic to a crowdsale.
-		|	|- refundableCrowdsale.sol: adds refund logic to a crowdsale.
-		|	└- refundablePostDeliveryCrowdsale.sol: adds refund and finalization logic to a post delivery crowdsale.
-		|-emission
-		|	|- allowanceCrowdsale.sol: adds token allowance logic to a crowdsale.
-		|	└- mintedCrowdsale.sol: adds minting logic to a crowdsale.
-		|-price
-		|	└- increasingPriceCrowdsale.sol: adds increasing price logic to a crowdsale.
-		└-validation
-			|- finalizableCrowdsale.sol: adds finalization logic to a crowdsale.
-			|- postDeliveryCrowdsale.sol: adds post delivery logic to a crowdsale.
-			|- timedCrowdsale.sol: adds timed logic to a crowdsale.
-			└- whitelistedCrowdsale.sol: adds whitelisting logic to a crowdsale.
+		└-tokens
+		 	|- burnable.sol: ERC20 burnable token utility with roles applied.
+		 	└- mintable.sol: ERC20 mintable token utility with roles applied.
+		
 
 And remember:
 [@ManOguaR](https://www.github.com/ManOguaR) rules!
