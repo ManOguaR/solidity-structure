@@ -25,6 +25,6 @@
   },
   "homepage": "https://github.com/ManOguaR/solidity-structure#readme",
   "dependencies": {
-    "@openzeppelin/contracts": "^5.0.0"
+    "@openzeppelin/contracts": "^4.9.0"
   }
 }
