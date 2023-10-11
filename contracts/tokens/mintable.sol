@@ -7,6 +7,9 @@ import {Context} from "@openzeppelin/contracts/utils/Context.sol";
 
 interface IMintable {
     function mint(address to, uint256 amount) external returns (bool);
+
+    function assignMinterRole(address assignedMinter) external;
+    function revokeMinterRole(address revokedMinter) external;
 }
 
 abstract contract ERC20Mintable is Context, ERC20, IMintable, AccessControl {
@@ -21,5 +24,20 @@ abstract contract ERC20Mintable is Context, ERC20, IMintable, AccessControl {
     function mint(address to, uint256 amount) public override onlyRole(MINTER_ROLE) returns (bool) {
         _mint(to, amount);
         return  true;
+    }
+
+    function assignMinterRole(address assignedMinter) public override onlyRole(DEFAULT_ADMIN_ROLE) {
+        _grantRole(MINTER_ROLE, assignedMinter);
+    }
+    
+    function revokeMinterRole(address revokedMinter) public override onlyRole(DEFAULT_ADMIN_ROLE) {
+        _revokeRole(MINTER_ROLE, revokedMinter);
+    }
+
+    /**
+     * @dev See {IERC165-supportsInterface}.
+     */
+    function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
+        return interfaceId == type(IMintable).interfaceId || super.supportsInterface(interfaceId);
     }
 }
