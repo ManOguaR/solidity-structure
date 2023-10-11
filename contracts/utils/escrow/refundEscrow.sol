@@ -36,8 +36,8 @@ contract RefundEscrow is ConditionalEscrow {
     constructor(address payable inBeneficiary, address inOwner)
     Ownable()
     {
-        require(inBeneficiary != address(0), "RefundEscrow: beneficiary is the zero address");
         require(inOwner != address(0), "RefundEscrow: owner is the zero address");
+        require(inBeneficiary != address(0), "RefundEscrow: beneficiary is the zero address");
         _beneficiary = inBeneficiary;
         _transferOwnership(inOwner);
         _state = State.Active;
