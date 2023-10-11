@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 /**
- * @title FinalizableContract
+ * @title Finalizable contract
  * @dev Contract abstraction with a one-off finalization action, where one
  * can do extra work after finishing.
  */
