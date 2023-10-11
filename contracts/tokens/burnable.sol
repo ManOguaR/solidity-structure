@@ -8,6 +8,9 @@ import {Context} from "@openzeppelin/contracts/utils/Context.sol";
 interface IBurnable {
     function burn(uint256 value) external returns (bool);
     function burnFrom(address account, uint256 value) external returns (bool);
+
+    function assignBurnerRole(address assignedBurner) external;
+    function revokeBurnerRole(address revokedBurner) external;
 }
 
 abstract contract ERC20Burnable is Context, ERC20, IBurnable, AccessControl {
@@ -44,5 +47,20 @@ abstract contract ERC20Burnable is Context, ERC20, IBurnable, AccessControl {
         _spendAllowance(account, _msgSender(), value);
         _burn(account, value);
         return  true;
+    }
+
+    function assignBurnerRole(address assignedBurner) public override onlyRole(DEFAULT_ADMIN_ROLE) {
+        _grantRole(BURNER_ROLE, assignedBurner);
+    }
+
+    function revokeBurnerRole(address revokedBurner) public override onlyRole(DEFAULT_ADMIN_ROLE) {
+        _revokeRole(BURNER_ROLE, revokedBurner);
+    }
+
+    /**
+     * @dev See {IERC165-supportsInterface}.
+     */
+    function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
+        return interfaceId == type(IBurnable).interfaceId || super.supportsInterface(interfaceId);
     }
 }
