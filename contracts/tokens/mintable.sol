@@ -15,6 +15,8 @@ interface IMintable {
 abstract contract ERC20Mintable is Context, ERC20, IMintable, AccessControl {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
+    event TokensMinted(address indexed by, address indexed to, uint256 amount);
+
     constructor(address defaultAdmin, address minter)
     {
         _grantRole(DEFAULT_ADMIN_ROLE, defaultAdmin);
@@ -23,6 +25,7 @@ abstract contract ERC20Mintable is Context, ERC20, IMintable, AccessControl {
 
     function mint(address to, uint256 amount) public override onlyRole(MINTER_ROLE) returns (bool) {
         _mint(to, amount);
+        emit TokensMinted(_msgSender(), to, amount);
         return  true;
     }
 

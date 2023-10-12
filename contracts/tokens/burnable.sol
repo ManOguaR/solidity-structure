@@ -16,6 +16,8 @@ interface IBurnable {
 abstract contract ERC20Burnable is Context, ERC20, IBurnable, AccessControl {
     bytes32 public constant BURNER_ROLE = keccak256("BURNER_ROLE");
 
+    event TokensBurnt(address indexed by, address indexed from, uint256 amount);
+
     constructor(address defaultAdmin, address burner)
     {
         _grantRole(DEFAULT_ADMIN_ROLE, defaultAdmin);
@@ -29,6 +31,7 @@ abstract contract ERC20Burnable is Context, ERC20, IBurnable, AccessControl {
      */
     function burn(uint256 value) public virtual onlyRole(BURNER_ROLE) returns (bool) {
         _burn(_msgSender(), value);
+        emit TokensBurnt(_msgSender(), _msgSender(), value);
         return  true;
     }
 
@@ -46,6 +49,7 @@ abstract contract ERC20Burnable is Context, ERC20, IBurnable, AccessControl {
     function burnFrom(address account, uint256 value) public virtual onlyRole(BURNER_ROLE) returns (bool) {
         _spendAllowance(account, _msgSender(), value);
         _burn(account, value);
+        emit TokensBurnt(_msgSender(), account, value);
         return  true;
     }
 
